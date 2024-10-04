@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules and Notifications</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <span>Rules and Notifications</span> <span style="float: right;">27-09-2024</span>
+    </div>
+
+    <div class="section-title">
+        Add Rule/Notification
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="ruleDescription" placeholder="Enter Rule/Notification Description">
+        <select id="ruleType">
+            <option value="Rule">Rule</option>
+            <option value="Notification">Notification</option>
+        </select>
+        <button onclick="addRule()">Submit</button>
+    </div>
+
+    <div class="section-title">
+        Rules and Notifications List
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Rule/Notification Description</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="rulesTable">
+            <tr>
+                <td>1</td>
+                <td>Interest collected</td>
+                <td>Notification</td>
+                <td><button class="remove-btn" onclick="removeRule(1)">✖</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <button class="btn-whatsapp" onclick="sendWhatsApp()">WhatsApp Now</button>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+    <a href="#">SHARE</a>
+</div>
+
+<script>
+    let ruleCounter = 2;
+
+    function addRule() {
+        const description = document.getElementById('ruleDescription').value;
+        const type = document.getElementById('ruleType').value;
+
+        if (description === "") {
+            alert("Please enter a description.");
+            return;
+        }
+
+        const table = document.getElementById('rulesTable');
+        const row = table.insertRow();
+        row.id = 'rule-' + ruleCounter;
+
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+        const cell4 = row.insertCell(3);
+
+        cell1.innerHTML = ruleCounter;
+        cell2.innerHTML = description;
+        cell3.innerHTML = type;
+        cell4.innerHTML = `<button class="remove-btn" onclick="removeRule(${ruleCounter})">✖</button>`;
+
+        ruleCounter++;
+
+        // Clear input fields
+        document.getElementById('ruleDescription').value = "";
+    }
+
+    function removeRule(id) {
+        const row = document.getElementById('rule-' + id);
+        row.remove();
+    }
+
+    function sendWhatsApp() {
+        const url = 'https://wa.me/?text=Rule%20and%20Notification%20information';
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>

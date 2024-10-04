@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachat Gat Loan Distribution</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Distribute Monthly Loan</h1>
+    <p><strong>Interest Rate:</strong> <span>2% / 5%</span> <a href="#">(Change)</a></p>
+    <p><strong>Bachat Gat Balance:</strong> ₹500.00</p>
+    <p><strong>Saving Month:</strong> September 2024</p>
+
+    <div class="info-box">
+        <p>Tip: If the previous information is recorded and the new loan data for the month has been updated...</p>
+    </div>
+
+    <form id="loanForm">
+        <div class="loan-input">
+            <label for="member">Select Member:</label>
+            <select id="member" name="member">
+                <option value="Shri.Pavan">Shri.Pavan</option>
+                <!-- Add other options here -->
+            </select>
+        </div>
+        <div class="loan-input">
+            <label for="loanAmount">Loan Amount:</label>
+            <input type="number" id="loanAmount" name="loanAmount" placeholder="Enter Loan Amount" min="0">
+        </div>
+        <div class="loan-input">
+            <label for="interestRate">Interest Rate:</label>
+            <input type="number" id="interestRate" name="interestRate" placeholder="Enter Interest Rate" min="0" max="100">
+        </div>
+        <button type="button" onclick="addLoan()">Distribute Loan</button>
+    </form>
+
+    <h3>Loan Distribution for This Month</h3>
+    <table id="loanTable">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Member</th>
+            <th>Loan</th>
+            <th>%</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="loanRow">
+            <td>1</td>
+            <td>Shri.Pavan</td>
+            <td>₹500</td>
+            <td>2%</td>
+            <td><button onclick="deleteRow(this)">❌</button></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="whatsapp">
+        <button onclick="sendWhatsApp()">WhatsApp Now</button>
+    </div>
+</div>
+
+<script>
+    let loanCounter = 1;
+
+    function addLoan() {
+        const member = document.getElementById('member').value;
+        const loanAmount = document.getElementById('loanAmount').value;
+        const interestRate = document.getElementById('interestRate').value;
+
+        if (loanAmount === '' || interestRate === '') {
+            alert('Please fill in all details');
+            return;
+        }
+
+        loanCounter++;
+
+        const table = document.getElementById('loanTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+
+        newRow.innerHTML = `
+            <td>${loanCounter}</td>
+            <td>${member}</td>
+            <td>₹${loanAmount}</td>
+            <td>${interestRate}%</td>
+            <td><button onclick="deleteRow(this)">❌</button></td>
+        `;
+    }
+
+    function deleteRow(button) {
+        const row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+
+    function sendWhatsApp() {
+        const message = "Loan distribution information to members.";
+        const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>

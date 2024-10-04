@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loksewa Loan Management</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<div class="loan_management_container ">
+    <h1>Loksewa</h1>
+    <p><strong>Bachat Gat Code:</strong> BG10712C</p>
+    <p><strong>Savings Month:</strong> September 2024</p>
+
+    <div class="grid-container">
+        <div class="box" onclick="viewInfo()">
+            <h3>View Info</h3>
+        </div>
+        <div class="box" onclick="depositInfo()">
+            <h3>Deposit Info</h3>
+        </div>
+    </div>
+
+    <p><strong>Bachat Gat Balance:</strong> ₹500.00</p>
+    <p><strong>Loan Distribution:</strong> ₹500.00 (1)</p>
+
+    <div class="grid-container">
+        <div class="box" onclick="otherExpenses()">
+            <h3>Other Expenses</h3>
+            <p>₹0.00 (0)</p>
+        </div>
+        <div class="box" onclick="otherIncome()">
+            <h3>Other Income</h3>
+            <p>₹0.00 (0)</p>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="box" onclick="collectSavings()">
+            <h3>Collect Savings</h3>
+        </div>
+        <div class="box" onclick="collectLoanInterest()">
+            <h3>Collect Loan Interest</h3>
+        </div>
+        <div class="box" onclick="loanDistribution()">
+            <h3>Distribute Loan</h3>
+        </div>
+        <div class="box" onclick="rulesSettings()">
+            <h3>Rules & Instructions</h3>
+        </div>
+        <div class="box" onclick="otherExpensesForm()">
+            <h3>Other Expenses</h3>
+        </div>
+        <div class="box" onclick="otherIncomeForm()">
+            <h3>Other Income</h3>
+        </div>
+        <div class="box" onclick="penaltySettings()">
+            <h3>Penalty & Savings Settings</h3>
+        </div>
+        <div class="box" onclick="interestRateSettings()">
+            <h3>Interest Rate Settings</h3>
+        </div>
+        <div class="box" onclick="memberList()">
+            <h3>Member List & Dues</h3>
+        </div>
+        <div class="box" onclick="saveData()">
+            <h3>Save & Exit</h3>
+        </div>
+    </div>
+
+    <div class="whatsapp">
+        <button onclick="sendWhatsApp()">Share on WhatsApp</button>
+    </div>
+</div>
+
+<script>
+    // Function stubs for all buttons
+    function viewInfo() {
+        alert('View information for members.');
+    }
+
+    function depositInfo() {
+        alert('Deposit information for members.');
+    }
+
+    function otherExpenses() {
+        alert('View other expenses.');
+    }
+
+    function otherIncome() {
+        alert('View other income.');
+    }
+
+    function collectSavings() {
+        alert('Collect savings for this month.');
+    }
+
+    function collectLoanInterest() {
+        alert('Collect loan interest for this month.');
+    }
+
+    function loanDistribution() {
+        alert('Distribute loan for members.');
+    }
+
+    function rulesSettings() {
+        alert('View and edit rules and instructions.');
+    }
+
+    function otherExpensesForm() {
+        alert('Add other expenses.');
+    }
+
+    function otherIncomeForm() {
+        alert('Add other income.');
+    }
+
+    function penaltySettings() {
+        alert('Set penalties and savings limits.');
+    }
+
+    function interestRateSettings() {
+        alert('Set interest rates.');
+    }
+
+    function memberList() {
+        alert('View member list and dues.');
+    }
+
+    function saveData() {
+        alert('Data saved.');
+    }
+
+    function sendWhatsApp() {
+        const message = "Sharing Bachat Gat information.";
+        const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>

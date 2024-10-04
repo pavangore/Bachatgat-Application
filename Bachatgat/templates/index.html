@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>बचतगट</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        Loksewa
+    </div>
+    <div class="sub-header">
+        Welcome In Loksewa Application
+    </div>
+
+    <div class="btn-group">
+        <button onclick="window.location.href='{% url 'registration' %}'">Registration</button>
+        <button onclick="window.location.href='{% url 'login' %}'">Login</button>
+    </div>
+
+    <div class="btn-group">
+        <button>Features Of Bachatgat</button>
+    </div>
+
+    <div class="section">
+        Help to keep savings groups away from scams
+    </div>
+
+    <div class="content">
+        • Bachatgat can be formed to get government subsidies and other benefits in the area of savings.<br>
+        • But using BachatGat App will bring security and transparency to every savings group.
+        All the members can see all the financial transactions of their savings group in a very easy way from their mobile.
+        <br> 
+    </div>
+
+    <div class="section">
+        Detailed information about government schemes for Bachatgat
+    </div>
+
+    <div class="content">
+        • In BachatGat App You can apply to get information about government schemes.<br>
+        • BachatGat App will facilitate transparent financial transactions and submission of applications.
+    </div>
+
+   <!--  <div class="section">
+        बचतगटाची एकूण रक्कम व त्यातील तुमचा वाटा पाहण्याची सोय
+    </div>
+
+    <div class="content">
+        • बचतगट वापर करून एकूण रक्कम पाहणे खूप सोपे केले आहे. <br>
+        • BachatGat App द्वारे प्रत्येक सदस्य आपला वाटा पाहू शकतो.
+    </div> -->
+
+    <footer>
+        <div class="footer-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+        <button>SHARE</button>
+    </footer>
+</div>
+
+</body>
+</html>

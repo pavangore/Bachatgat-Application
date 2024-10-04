@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Member Registration</h1>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <form id="memberForm" method="post" action="/register-member/">
+                {% csrf_token %}
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter Full Name" required>
+
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="Member">Member</option>
+                    <option value="Chairperson">Chairperson</option>
+                </select>
+
+                <label for="entryMonth">Entry Month:</label>
+                <select id="entryMonth" name="entryMonth">
+                    <option value="">Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+
+                <label for="entryYear">Entry Year:</label>
+                <select id="entryYear" name="entryYear">
+                    {% for year in year_range %}
+                        <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="mobile">Mobile:</label>
+                <input type="text" id="mobile" name="mobile" placeholder="Enter Mobile Number" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+                <button type="submit" class="btn">Register Member</button>
+            </form>
+        </div>
+
+        <!-- Member List Section -->
+        <div class="table-section">
+            <h2>Members Registered This Month</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Member</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="memberList">
+                    {% for member in members %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ member.name }}</td>
+                        <td>{{ member.role }}</td>
+                        <td>
+                            <button class="edit-btn">✏️</button>
+                            <button class="delete-btn">❌</button>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">No members registered.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

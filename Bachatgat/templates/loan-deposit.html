@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Deposit</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <span>Loan Deposit</span> <span style="float: right;">27-09-2024</span>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Fine: Please set (Set)</div>
+        <div class="section-title">Deposit Date: Please set (Set)</div>
+    </div>
+
+    <div class="info-box">
+        <strong>Note:</strong> For this month, no loan collections will be visible as no loans are active for this period. Please ensure that any previous dues are settled, and once all dues are collected, move on to the next month’s loan collection.
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Member</th>
+                    <th>Loan</th>
+                    <th>Interest</th>
+                    <th>Fine</th>
+                    <th>Remaining Loan</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="loanMembersTable">
+                <tr>
+                    <td>1</td>
+                    <td>Mr.Pavan</td>
+                    <td>₹5000</td>
+                    <td>₹300</td>
+                    <td>₹0</td>
+                    <td>₹2000</td>
+                    <td><button onclick="removeLoanMember(1)">✖</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Month Loan Pending Member</th>
+                    <th>Loan (P)</th>
+                    <th>Interest (P)</th>
+                    <th>Fine (P)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="button-container">
+        <button class="btn" onclick="sendWhatsApp()">WhatsApp Now</button>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+    <a href="#">SHARE</a>
+</div>
+
+<script>
+    function removeLoanMember(id) {
+        const row = document.querySelector(`#loanMembersTable tr:nth-child(${id})`);
+        if (row) row.remove();
+    }
+
+    function sendWhatsApp() {
+        const url = 'https://wa.me/?text=Loan%20member%20information';
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="mr">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachatgat login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <div class="header">Loksewa</div>
+    <marquee><div class="">Welcome In Bachatgat App!</div></marquee>
+
+    <div class="container">
+        <form method="POST" action="/login/">
+    {% csrf_token %}
+<!--    <div class="input-group">-->
+<!--        <label for="bachatgat-code">Bachatgat Code:</label>-->
+<!--        <input type="text" id="bachatgat-code" name="bachatgat-code">-->
+<!--    </div>-->
+<!--    <div class="input-group">-->
+<!--        <label for="bachatgat-name">Bachatgat:</label>-->
+<!--        <input type="text" id="bachatgat-name" name="bachatgat-name">-->
+<!--    </div>-->
+
+    <div class="input-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+    </div>
+    <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+    </div>
+
+    <button class="login-btn" type="submit">Login</button>
+</form>
+{% if messages %}
+    <div>
+        {% for message in messages %}
+            <p class="{% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+        <div class="footer">
+            By registering, you agree to our <a href="#">Privacy Policies</a> and <a href="#">Terms & Conditions</a>.
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#" class="share-btn">SHARE</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachat Gat Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="header">Loksewa</div>
+    <div class="sub-header">Welcome to the Loksewa App!</div>
+
+    <div class="registration-container">
+        <form method="post" action="/bachatgat-registration/">
+            {% csrf_token %}
+
+            <label for="bachatgat-name">Bachat Gat Name:</label>
+            <input type="text" id="bachatgat-name" name="bachatgat-name">
+
+            <!-- Start Month Selection -->
+            <label for="start-month">Start Month:</label>
+            <select id="start-month" name="start-month">
+                <option value="">Select Month</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+
+            <!-- Start Year Selection -->
+            <select id="start-year" name="start-year">
+                <option value="">Select Year</option>
+                {% for year in year_range %}
+                    <option value="{{ year }}">{{ year }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="chairperson-name">Chairperson's Name:</label>
+            <select id="chairperson-title" name="chairperson-title">
+                <option value="shree">Mr.</option>
+                <option value="shrimati">Mrs.</option>
+            </select>
+            <input type="text" id="chairperson-name" name="chairperson-name">
+
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile">
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+
+            <label for="password">Set Password:</label>
+            <input type="password" id="password" name="password">
+
+            <button class="button" type="submit">Submit</button>
+        </form>
+
+        <div class="footer">
+            By registering, you agree to our <a href="#">Privacy Policies</a> and <a href="#">Terms & Conditions</a>.
+        </div>
+    </div>
+
+    <div class="notes">
+        <p class="red">Regarding the Selection of Start Month</p>
+        <p>If the start of your Bachat Gat was many years ago and you don’t want to enter data for previous months:</p>
+        <div class="steps">
+            <p>Step 1: Without entering the previous months' data, calculate the previous balance of the Bachat Gat and set the month from which you want to start entering data as the Start Month.</p>
+            <p>Step 2: Once all the expenses, interest, and savings from the selected Start Month are recorded, calculate the final balance and distribute it to each member.</p>
+            <p>Step 3: Enter the record for the months after the Start Month.</p>
+            <p>Step 4: Distribute all expenses from the selected Start Month.</p>
+        </div>
+    </div>
+
+    <div class="nav">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#" class="share-btn">SHARE</a>
+    </div>
+
+</body>
+</html>
